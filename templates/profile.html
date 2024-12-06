@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <div class="container infor">
+        <div id="content">
+            <div id="left" class="animate-left">
+                <p style="font-weight: bold; font-size: 25px;">Description</p>
+                <p>{{ info['longBusinessSummary']}}</p>
+            </div>
+            <div id="right" class="animate-right">
+                <p style="font-weight: bold; font-size: 25px;">{{ info["longName"] }}</p>
+                <p>Country: <span style="font-weight: bold;">{{ info['address1'] }}</span></p>
+                <p>City: <span style="font-weight: bold;">{{ info['city'] }}, {{ info['state'] }} {{ info['zip'] }}</span></p>
+                <p>Country: <span style="font-weight: bold;">{{ info['country'] }}</span></p>
+                <p>Phone: <span style="font-weight: bold;">{{ info['phone']}}</span></p>
+                <p>Website: <a href="{{ info['website']}}" class="web">{{ info['website']}}</a></p>
+                <p>Sector: <span style="font-weight: bold;">{{ info['sector']}}</span></p>
+                <p>Industry: <span style="font-weight: bold;">{{ info['industry']}}</span></p>
+                <p>Full Time Employees: <span style="font-weight: bold;">{{ info['fullTimeEmployees'] }}</span></p>
+            </div>
+        </div>
+
+        <div id="executive" class="executive-content">
+            <p style="font-weight: bold; font-size: 25px; margin-top: 30px; margin-bottom: 30px;">Key Executives</p>
+            <table class="table table-hover text-center" style="border: 1px solid #c0c0c0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Year Born</th>
+                        <th>Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for executive in info['companyOfficers'] %}
+                        <tr>
+                            <td>{{ executive.get('name', "--") }}</td>
+                            <td>{{ executive.get('title', "--") }}</td>
+                            <td>{{ executive.get('yearBorn', "--") }}</td>
+                            <td>{{ executive.get('totalPay', "--")}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function updatePrice() {
+            fetch("/update-price")
+            .then(response => response.json())
+            .then(data => {
+                nowPrice = document.getElementById("now_price")
+                nowPrice.textContent = `$${data.price}`
+                if (data.sign) {
+                    nowPrice.classList.remove('loss');
+                    nowPrice.classList.add('gain');
+                } else {
+                    nowPrice.classList.remove('gain');
+                    nowPrice.classList.add('loss');
+                }
+
+                const changePrice = document.querySelector('.change-price')
+                if (data.change_price !== null) {
+                    const color = data.change_price > 0 ? 'green' : 'red';
+                    changePrice.innerHTML = `
+                        <span style="color: ${color}; font-size: 20px;">
+                            ${data.change_price > 0 ? '+' : ''}${data.change_price}
+                            <span>(${data.percent}%)</span>
+                        </span>
+                    `;
+                }
+            })
+        }
+        setInterval(updatePrice, 60000);
+        updatePrice()
+        const executiveSection = document.getElementById("executive");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate-top");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(executiveSection);
+    </script>
+{% endblock %}
+
+{% block styles %}
+    <style>
+
+        .animate-left {
+            animation: slide-left 0.6s ease-out forwards;
+        }
+
+        .animate-right {
+            animation: slide-right 0.6s ease-out forwards;
+        }
+
+        .animate-top {
+            animation: slide-top 0.5s ease-out forwards;
+        }
+
+        @keyframes slide-left {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-right {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-top {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .executive-content {
+            opacity: 0;
+        }
+    </style>
+{% endblock %}

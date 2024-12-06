@@ -1,0 +1,196 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Chart
+{% endblock %}
+
+{% block canvas %}
+    <canvas width="150" height="80" style="display: inline-block; margin-left: 80px;"></canvas>
+{% endblock %}
+
+{% block main %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/4.1.0/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/builds/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div style="margin-top: 30px; margin-bottom: -30px;">
+        <div class="TimeChart" style="display: inline-block; margin-left: 25%;">
+            <form action="/chart" method="POST" id="timeChart">
+                <input type="hidden" name="formType" value="timeChart">
+                <button type="submit" name="timeChart" value="1d" class="{% if session['timeChart'] == '1d' %}active{% else %}inactive{% endif %}">1D</button>
+                <button type="submit" name="timeChart" value="1mo" class="{% if session['timeChart'] == '1mo' %}active{% else %}inactive{% endif %}">1M</button>
+                <button type="submit" name="timeChart" value="6mo" class="{% if session['timeChart'] == '6mo' %}active{% else %}inactive{% endif %}">6M</button>
+                <button type="submit" name="timeChart" value="ytd" class="{% if session['timeChart']== 'ytd' %}active{% else %}inactive{% endif %}">YTD</button>
+                <button type="submit" name="timeChart" value="1y" class="{% if session['timeChart'] == '1y' %}active{% else %}inactive{% endif %}">1Y</button>
+                <button type="submit" name="timeChart" value="5y" class="{% if session['timeChart'] == '5y' %}active{% else %}inactive{% endif %}">5Y</button>
+                <button type="submit" name="timeChart" value="max" class="{% if session['timeChart'] == 'max' %}active{% else %}inactive{% endif %}">Max</button>
+            </form>
+        </div>
+        <div style="display: inline-block; margin-left: 200px;">
+            <form method="POST" id="chartType">
+                <input type="hidden" name="formType" value="chartType">
+                <select name="optionChart" class="select" onchange="document.getElementById('chartType').submit();">
+                    <option value="Line" {% if isLine %}selected{% endif %}>Line</option>
+                    <option value="Candle" {% if not isLine %}selected{% endif %}>Candle</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    {% if isLine %}
+        <div id="lineChart" style="width: 100%; max-width: 1300px; margin: 30px auto;"></div>
+        <script>
+            var timeChart = "{{ session['timeChart'] }}";
+            var lineData = {{ line | tojson }};
+            var lineOptions = {
+                    chart: { type: 'line',
+                            height: 350,
+                            toolbar: { show: false},
+                            background: "#fff",
+                    },
+                    series: [{ data: lineData }],
+                    xaxis: { type: 'datetime',
+                            labels: {
+                                formatter: function(value, timestamp) {
+                                    var date = new Date(timestamp);
+                                    if (timeChart  === "1d") {
+                                        return date.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        }).replace('AM', '').replace('PM', '');
+                                    }
+                                    else if (timeChart === "max" || timeChart === "5y") {
+                                        return date.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                        });
+                                    }
+                                    else if (timeChart === "1mo") {
+                                        return date.toLocaleDateString('en-US', {
+                                            day: '2-digit',
+                                        });
+                                    }
+                                    else {
+                                        return date.toLocaleDateString('en-US', {
+                                            month: 'short',
+                                        });
+                                    }
+                                }
+                            }
+                    },
+                    yaxis: { labels: {
+                        formatter: function(value) { return Math.round(value); }
+                        }
+                    },
+                    stroke: {
+                        show: true,
+                        curve: 'straight',
+                        lineCap: 'butt',
+                        colors: undefined,
+                        width: 2,
+                        dashArray: 0,
+                    },
+                    tooltip: {
+                        x: {
+                            formatter: function(value) {
+                                const date = new Date(value);
+                                if (timeChart === "1d") {
+                                    return date.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    }).replace('AM', '').replace('PM', '');
+                                } else {
+                                    return date.toLocaleDateString('en-US', {
+                                        day: '2-digit',
+                                        month: 'numeric',
+                                        year: 'numeric',
+                                    });
+                                }
+                            }
+                        }
+                    }
+            };
+
+            var lineChart = new ApexCharts(document.querySelector("#lineChart"), lineOptions);
+            lineChart.render();
+        </script>
+    {% else %}
+            <div id="candleChart" style="width: 100%; max-width: 1300px; margin: 30px auto;"></div>
+            <script>
+                var timeChart = "{{ session['timeChart'] }}";
+                var candlestickData = {{ candlestick | tojson }};
+                var candlestickOptions = {
+                    chart: { type: 'candlestick',
+                            height: 350,
+                            toolbar: {show: false},
+                        },
+                    series: [{ data: candlestickData }],
+                    xaxis: { type: 'datetime',
+                            labels: {
+                                formatter: function(value, timestamp) {
+                                    var date = new Date(timestamp);
+                                    if (timeChart  === "1d") {
+                                        return date.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        }).replace('AM', '').replace('PM', '');
+                                    }
+                                    else if (timeChart === "max" || timeChart === "5y") {
+                                        return date.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                        });
+                                    }
+                                    else if (timeChart === "1mo") {
+                                        return date.toLocaleDateString('en-US', {
+                                            day: '2-digit',
+                                        });
+                                    }
+                                    else {
+                                        return date.toLocaleDateString('en-US', {
+                                            month: 'short',
+                                        });
+                                    }
+                                }
+                            }
+                    },
+                    yaxis: { labels: {
+                        formatter: function(value) { return Math.round(value); }
+                        }
+                    },
+                    tooltip: {
+                        x: {
+                            formatter: function(value) {
+                                const date = new Date(value);
+                                if (timeChart === "1d") {
+                                    return date.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    }).replace('AM', '').replace('PM', '');
+                                } else {
+                                    return date.toLocaleDateString('en-US', {
+                                        day: '2-digit',
+                                        month: 'numeric',
+                                        year: 'numeric',
+                                    });
+                                }
+                            }
+                        }
+                    }
+            };
+                var candlestickChart = new ApexCharts(document.querySelector("#candleChart"), candlestickOptions);
+                candlestickChart.render();
+            </script>
+        {% endif %}
+{% endblock %}
+{% block scripts %}
+    <script>
+        function setTime(data) {
+            const buttons = document.querySelectorAll('input[name="timeChart"]')
+
+            buttons.forEach(button => {
+                button.classList.remove("active");
+                button.classList.add("inactive");
+            })
+        const clickedButton = document.querySelector(`button[onclick="setTime('${data}')"]`);
+        clickedButton.classList.remove("inactive");
+        clickedButton.classList.add("active");
+        }
+    </script>
+{% endblock %}

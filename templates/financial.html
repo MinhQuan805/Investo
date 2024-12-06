@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Financial
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="financial">
+            <form action="/financial" method="POST">
+                <input type="hidden" name="financials" id="financials">
+                <button type="submit" class="{% if financials == 'income_stmt' %}active{% else %}inactive{% endif %}" onclick="setTime('income_stmt')">Income Statement</button>
+                <button type="submit" class="{% if financials == 'balance_sheet' %}active{% else %}inactive{% endif %}" onclick="setTime('balance_sheet')">Balance Sheet</button>
+                <button type="submit" class="{% if financials == 'cashflow' %}active{% else %}inactive{% endif %}" onclick="setTime('cashflow')">Cash Flow</button>
+            </form>
+        </div>
+        <div style="margin-top: 10px;">
+            <table id="financialTable" class="table table-hover text-center financial-table" style="border: 1px solid #c0c0c0; margin-bottom: 30px; margin-top: 15px ;border-radius: 10px; width: 100%;">
+                <thead>
+                    <tr style="font-weight: bold; font-size: 17px;">
+                        <td style="width: 400px;">Breakdown</td>
+                        {% for i in time[:4] %}
+                            <td>{{ i }}</td>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in financial.iterrows() %}
+                        <tr>
+                            <td style="font-size: 15px; max-width: 300px;">{{ breakdown[loop.index0] }}</td>
+                            {% for time in time[:4] %}
+                                <td>{{ row[time] }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function setTime(data) {
+            document.getElementById('financials').value = data;
+        }
+
+        // Intersection Observer để kích hoạt animation khi cuộn đến bảng
+        const table = document.getElementById("financialTable");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fade-in");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(table);
+    </script>
+{% endblock %}
+
+{% block styles %}
+    <style>
+
+        .financial-table {
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+    </style>
+{% endblock %}

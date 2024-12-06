@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Analysis
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div style="margin-top: 40px;">
+            <h1 class="fade-in-text" style="font-size: 25px; font-weight: bold;">Earnings Estimate</h1>
+            <table id="earningsTable" class="table table-hover text-center financial-table" style="border: 1px solid #c0c0c0; margin-bottom: 30px; margin-top: 15px; border-radius: 10px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Current Quarter</th>
+                        <th>Next Quarter</th>
+                        <th>Current Year</th>
+                        <th>Next Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set j = ["No. of Analysts", "Avg. Estimate", "Low Estimate", "High Estimate", "Year Ago EPS", "Growth"] %}
+                    {% for i in earning %}
+                        <tr>
+                            <td>{{ j[loop.index0] }}</td>
+                            <td>{{ i["0q"] }}</td>
+                            <td>{{ i["+1q"] }}</td>
+                            <td>{{ i["0y"] }}</td>
+                            <td>{{ i["+1y"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h1 class="fade-in-text" style="font-size: 25px; font-weight: bold;">Revenue Estimate</h1>
+            <table id="revenueTable" class="table table-hover text-center financial-table" style="border: 1px solid #c0c0c0; margin-bottom: 30px; margin-top: 15px; border-radius: 10px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Current Quarter</th>
+                        <th>Next Quarter</th>
+                        <th>Current Year</th>
+                        <th>Next Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set j = ["No. of Analysts", "Avg. Estimate", "Low Estimate", "High Estimate", "Year Ago Sales", "Sales Growth"] %}
+                    {% for i in revenue %}
+                        <tr>
+                            <td>{{ j[loop.index0] }}</td>
+                            <td>{{ i["0q"] }}</td>
+                            <td>{{ i["+1q"] }}</td>
+                            <td>{{ i["0y"] }}</td>
+                            <td>{{ i["+1y"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h1 class="fade-in-text" style="font-size: 25px; font-weight: bold;">EPS Trend</h1>
+            <table id="trendTable" class="table table-hover text-center financial-table" style="border: 1px solid #c0c0c0; margin-bottom: 30px; margin-top: 15px; border-radius: 10px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Current Quarter</th>
+                        <th>Next Quarter</th>
+                        <th>Current Year</th>
+                        <th>Next Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set j = ["Current Estimate", "7 Days Ago", "30 Days Ago", "60 Days Ago", "90 Days Ago"] %}
+                    {% for i in trend %}
+                        <tr>
+                            <td>{{ j[loop.index0] }}</td>
+                            <td>{{ i["0q"] }}</td>
+                            <td>{{ i["+1q"] }}</td>
+                            <td>{{ i["0y"] }}</td>
+                            <td>{{ i["+1y"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h1 class="fade-in-text" style="font-size: 25px; font-weight: bold;">EPS Revisions</h1>
+            <table id="revisionTable" class="table table-hover text-center financial-table" style="border: 1px solid #c0c0c0; margin-bottom: 30px; margin-top: 15px; border-radius: 10px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Current Quarter</th>
+                        <th>Next Quarter</th>
+                        <th>Current Year</th>
+                        <th>Next Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set j = ["Up Last 7 Days", "Up Last 30 Days", "Down Last 7 Days", "Down Last 30 Days"] %}
+                    {% for i in revision %}
+                        <tr>
+                            <td>{{ j[loop.index0] }}</td>
+                            <td>{{ i["0q"] }}</td>
+                            <td>{{ i["+1q"] }}</td>
+                            <td>{{ i["0y"] }}</td>
+                            <td>{{ i["+1y"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h1 class="fade-in-text" style="font-size: 25px; font-weight: bold;">Growth Estimates</h1>
+            <table id="growthTable" class="table table-hover text-center financial-table" style="border: 1px solid #c0c0c0; margin-bottom: 30px; margin-top: 15px; border-radius: 10px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Current Quarter</th>
+                        <th>Next Quarter</th>
+                        <th>Current Year</th>
+                        <th>Next Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set j = ["Stock", "Industry", "Sector", "Index"] %}
+                    {% for i in growth %}
+                        <tr>
+                            <td>{{ j[loop.index0] }}</td>
+                            <td>{{ i["0q"] }}</td>
+                            <td>{{ i["+1q"] }}</td>
+                            <td>{{ i["0y"] }}</td>
+                            <td>{{ i["+1y"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const tables = document.querySelectorAll(".financial-table");
+        const textElements = document.querySelectorAll(".fade-in-text");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fade-in");
+                }
+            });
+        }, { threshold: 0.2 });
+        tables.forEach(table => {
+            observer.observe(table);
+        });
+
+        textElements.forEach(text => {
+            observer.observe(text);
+        });
+    </script>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .financial-table,
+        .fade-in-text {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+    </style>
+{% endblock %}

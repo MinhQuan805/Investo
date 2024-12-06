@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    News
+{% endblock %}
+
+{% block main %}
+    <style>
+        .news {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .news.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const newsItems = document.querySelectorAll(".news");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            });
+
+            newsItems.forEach(item => observer.observe(item));
+        });
+    </script>
+
+
+    <h1 style="font-size: 25px; text-align: center; margin-top: 40px;" >Recent News: {{ info["symbol"] }}</h1>
+    <div class="container" style="margin-top: 30px;">
+        {% for new in news %}
+            {% if loop.index0 % 2 == 0 %}
+                <div class="row">
+            {% endif %}
+                <a href="{{ new['link'] }}" class="news">
+                    <div class="news-text">
+                        <p class="news-title">{{ new["title"] }}</p>
+                        <p class="news-info">{{ new["publisher"] }} <span class="dot">&bull;</span> <span>{{ list[loop.index0] }}</span></p>
+                    </div>
+                    {% if "thumbnail" in new and new['thumbnail']['resolutions'] %}
+                        <img src="{{ new["thumbnail"]["resolutions"][0]["url"] }}" alt="Thumbnail" class="news-thumbnail">
+                    {% endif %}
+                </a>
+            {% if loop.index0 % 2 == 1 or loop.last %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

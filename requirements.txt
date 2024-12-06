@@ -1,0 +1,4 @@
+flask==2.3.3
+yfinance==0.2.50
+pandas==2.2.3
+Flask-Session==0.8.0

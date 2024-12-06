@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div style="margin-bottom: 10px; margin-left: 30px;">
+        <div class="custom-dropdown" style="display: inline-block;">
+            <div class="dropdown-select" onclick="toggleDropdown()">
+                <span id="selected-range" class="date">Từ {{ start }} đến {{ end }}</span>
+                <span class="caret">&#9660;</span>
+            </div>
+
+            <div class="dropdown-menu">
+                <div class="time-options">
+                    <form action="/history" method="POST">
+                        <input type="hidden" name="comp" value="{{ session['company'] }}">
+                        <input type="hidden" name="time" id="time-value">
+                        <input type="hidden" name="timeType" value="time">
+                        <button type="submit" onclick="setTime('1d')">1D</button>
+                        <button type="submit" onclick="setTime('5d')">5D</button>
+                        <button type="submit" onclick="setTime('3mo')">3M</button>
+                        <button type="submit" onclick="setTime('6mo')">6M</button>
+                        <button type="submit" onclick="setTime('ytd')">YTD</button>
+                        <button type="submit" onclick="setTime('1y')">1Y</button>
+                        <button type="submit" onclick="setTime('5y')">5Y</button>
+                        <button type="submit" onclick="setTime('max')">Max</button>
+                    </form>
+                </div>
+                <form action="/history" method="POST" name="validate-date">
+                    <input type="hidden" name="timeType" value="input">
+                    <label for="start-date">Start Date</label>
+                    <input class="your-date" type="text" name="start_input" id="start-date" placeholder="{{ start }}">
+                    <label for="end-date">End Date</label>
+                    <input class="your-date" type="text" name="end_input" id="end-date" placeholder="{{ end }}">
+                    <div class="button-group">
+                        <button type ="submit" class="done-btn actions">Done</button>
+                        <button type="button" onclick="cancelSelection()" class="cancel-btn actions">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="display: inline-block;">
+            <form method="POST" id="historyForm">
+                <input type="hidden" name="timeType" value="interval">
+                <select name="interval" onchange="document.getElementById('historyForm').submit();">
+                    <option value="1d" {% if session['interval'] == '1d' %}selected{% endif %}>Daily</option>
+                    <option value="1wk" {% if session['interval'] == '1wk' %}selected{% endif %}>Weekly</option>
+                    <option value="1mo" {% if session['interval'] == '1mo' %}selected{% endif %}>Monthly</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table table-hover text-center" style="border: 1px solid #c0c0c0">
+            <thead>
+                <tr>
+                    <th style="width: 250px;">Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in value %}
+                    <tr>
+                        <td>{{ row["Date"] }}</td>
+                        <td>{{ row["Open"] }}</td>
+                        <td>{{ row["High"] }}</td>
+                        <td>{{ row["Low"] }}</td>
+                        <td>{{ row["Close"] }}</td>
+                        <td>{{ row["Volume"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        window.onload = function() {
+            const table = document.querySelector('.table');
+            table.classList.add('show');
+
+            const dropdown = document.querySelector('.custom-dropdown');
+            dropdown.classList.add('show');
+
+            const intervalForm = document.querySelector('form#historyForm');
+            intervalForm.classList.add('show');
+
+            const errorMessage = document.querySelector(".error-message");
+            if (errorMessage) {
+                setTimeout(() => {
+                    errorMessage.style.display = "none";
+                }, 5000);
+            }
+        };
+
+        function setTime(range) {
+            document.getElementById('time-value').value = range;
+        };
+
+        function toggleDropdown() {
+            const menu = document.querySelector('.dropdown-menu');
+            menu.classList.toggle('show');
+        };
+
+        function cancelSelection() {
+            const menu = document.querySelector('.dropdown-menu');
+            menu.classList.remove('show');
+        };
+    </script>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .table {
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .table.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .custom-dropdown {
+            opacity: 0;
+            z-index: 10;
+            transform: translateX(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 11;
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .custom-dropdown.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .dropdown-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        form#historyForm {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        form#historyForm.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+{% endblock %}
+
