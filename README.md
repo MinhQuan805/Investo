@@ -2,7 +2,7 @@
      alt="Image 2" 
      width="150" 
      style="vertical-align: middle;"> 
-<span style="position: relative; top: 5px;">A stock market web-based application.</span>
+# A stock market web-based application.
 
 
 ### Video Demo:
