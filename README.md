@@ -16,13 +16,13 @@
 **Analysis:**  Displays analysts’ price targets and stock ratings.
 
 ## Demo
-## Demo
 
-<div "text-align: center;">
+<div style="text-align: center;">
   <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2" width="400" style="margin: 10px;">
   <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true" alt="Image 3" width="400" style="margin: 10px;">
 </div>
-<div "text-align: center;">
+
+<div style="text-align: center;">
   <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true" alt="Image 5" width="400" style="margin: 10px;">
   <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true" alt="Image 4" width="400" style="margin: 10px;">
 </div>
