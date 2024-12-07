@@ -1,4 +1,4 @@
-<img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/1.png" 
+<img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/1.png?raw=true" 
      alt="Image 2" 
      width="150" 
      style="vertical-align: middle;"> 
