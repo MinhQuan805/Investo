@@ -15,7 +15,7 @@
 
 **Analysis:**  Displays analysts’ price targets and stock ratings.
 
-![image alt](https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true)
-![image alt](https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true)
-![image alt](https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true)
-![image alt](https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true)
+## Demo
+
+![image alt](https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true) ![image alt](https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true)
+![image alt](https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true) ![image alt](https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true)
