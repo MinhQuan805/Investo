@@ -1,7 +1,4 @@
-<img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/1.png?raw=true" 
-     alt="Image 2" 
-     width="150" 
-     style="vertical-align: middle;"> 
+<img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/1.png?raw=true" alt="Image 2" width="150" >
 # A stock market web-based application.
 
 
