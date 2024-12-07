@@ -1,7 +1,7 @@
 # ![image alt](https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/1.png)
 # A stock market web-based application.
 ### Video Demo:
-### Link Url: minhquan.pythonanywhere.com
+### Link Url: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
 ## Feature
 **Profile:**  Shows company details including description, industry, sector, executives, and headquarters location.
 
