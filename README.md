@@ -1,10 +1,10 @@
 
-# **Investo** - A Stock Market Web-Based Application
+# <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/1.png?raw=true" alt="Image 2" width="150" >   -  A stock market web-based application.
 
 ### **Video Demo**: [YouTube Demo](https://youtu.be/TQCcaaUclTI)
-### **Live Site**: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
+### **Link**: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
 
-## **Overview**
+## **Description**:
 Investo is a web-based platform tailored for stock market enthusiasts, analysts, and investors of all levels. Designed with a user-centric approach, it provides powerful tools and features to enable users to make well-informed financial decisions. Its intuitive design and visually engaging interface simplify the complexity of stock market data, making it accessible to everyone from seasoned investors to beginners.
 
 ---
@@ -103,13 +103,13 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 ## **Demo**
 
 <div style="text-align: center;">
-    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/1.png?raw=true" alt="Homepage" width="400">
-    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Company Details" width="400">
+    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2" width="400">
+    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true" alt="Image 3" width="400">
 </div>
 
 <div style="text-align: center;">
-    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/3.png?raw=true" alt="Chart" width="400">
-    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true" alt="Financial Data" width="400">
+    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true" alt="Image 5" width="400">
+    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true" alt="Image 4" width="400">
 </div>
 
 ---
