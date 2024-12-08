@@ -5,7 +5,7 @@
 ### Link Url: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
 ## Description
 Investo brings together a suite of powerful tools tailored to meet the needs of investors. Whether you are conducting a fundamental analysis or planning your next trade, this platform provides an intuitive and data-rich experience to make better-informed financial decisions.
-# Feature
+### Feature
 **Profile:**  Shows company details including description, industry, sector, executives, and headquarters location.
 
 **News:**  The latest news related to stocks from reputable financial articles.
@@ -18,7 +18,7 @@ Investo brings together a suite of powerful tools tailored to meet the needs of 
 
 **Analysis:**  Displays analysts’ price targets and stock ratings.
 
-# Demo
+### Demo
 
 <div style="text-align: center;">
     <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2" width="400">
