@@ -3,6 +3,8 @@
 
 ### Video Demo: https://youtu.be/TQCcaaUclTI/
 ### Link Url: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
+## Description
+Investo brings together a suite of powerful tools tailored to meet the needs of investors. Whether you are conducting a fundamental analysis or planning your next trade, this platform provides an intuitive and data-rich experience to make better-informed financial decisions.
 ## Feature
 **Profile:**  Shows company details including description, industry, sector, executives, and headquarters location.
 
