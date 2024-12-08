@@ -4,8 +4,22 @@
 ### **Video Demo**: [YouTube Demo](https://youtu.be/TQCcaaUclTI)
 ### **Link**: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
 
-## **Description**:
+## **Description**
 Investo is a web-based platform tailored for stock market enthusiasts, analysts, and investors of all levels. Designed with a user-centric approach, it provides powerful tools and features to enable users to make well-informed financial decisions. Its intuitive design and visually engaging interface simplify the complexity of stock market data, making it accessible to everyone from seasoned investors to beginners.
+
+---
+
+## **Demo**
+
+<div style="text-align: center;">
+    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2" width="400">
+    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true" alt="Image 3" width="400">
+</div>
+
+<div style="text-align: center;">
+    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true" alt="Image 5" width="400">
+    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true" alt="Image 4" width="400">
+</div>
 
 ---
 
@@ -61,7 +75,6 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
     - `history.html`: Provides access to past stock prices and trading volume.
 
 - **`static/`**:
-  - Stores CSS, JavaScript, and images to style and add interactivity to the site.
   - `style.css`: Custom styles for the UI.
 
 ### **2. Data Integration**
@@ -97,20 +110,6 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 - Add portfolio tracking to allow users to manage and monitor their investments.
 - Include predictive modeling tools to forecast stock trends.
 - Integrate user authentication for personalized data views and saved settings.
-
----
-
-## **Demo**
-
-<div style="text-align: center;">
-    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2" width="400">
-    <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true" alt="Image 3" width="400">
-</div>
-
-<div style="text-align: center;">
-    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true" alt="Image 5" width="400">
-    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true" alt="Image 4" width="400">
-</div>
 
 ---
 
