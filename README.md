@@ -64,6 +64,7 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 <p align="center">
   <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/8.png?raw=true" alt="Image 8" width="600" height="auto">
 </p>
+
 - Shows insights from analysts, including:
   - **Price Targets**: Expected future price ranges.
   - **Stock Ratings**: Analyst recommendations (e.g., buy, hold, sell).
