@@ -56,9 +56,9 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 
 ### **5. Financials**
 
-<div align="center">
-  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2">
-</div>
+<p align="center">
+  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/5.png?raw=true" alt="Image 5" width="600" height="auto">
+</p>
 
 - Displays financial reports such as:
   - Revenue.
