@@ -15,11 +15,6 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
   <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/2.png?raw=true" alt="Image 2">
 </div>
 
-<div style="text-align: center;">
-    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/5.png?raw=true" alt="Image 5" width="400">
-    <img src="https://github.com/MinhQuan805/Investo/blob/b33bc564a4cd2ad838a5b2055a2e02c4903cec70/Demo/4.png?raw=true" alt="Image 4" width="400">
-</div>
-
 ---
 
 ## **Features**
@@ -36,14 +31,26 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 
 
 ### **2. News**
+<p align="center">
+  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/4.png?raw=true" alt="Image 4" width="600" height="auto">
+</p>
+
 - Aggregates and presents the latest stock-related news articles from reputable financial outlets.
 
 ### **3. Chart**
+<p align="center">
+  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/5.png?raw=true" alt="Image 5" width="600" height="auto">
+</p>
+
 - Offers a visual price chart with tools for:
   - **Technical Analysis**: Supports various indicators to analyze trends.
   - **Customizable Time Frames**: View price data across different periods.
 
 ### **4. Historical Data**
+<p align="center">
+  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/6.png?raw=true" alt="Image 6" width="600" height="auto">
+</p>
+
 - Provides access to past stock prices and trading volume:
   - Choose time frames: **daily**, **weekly**, or **monthly**.
 
@@ -54,6 +61,9 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
   - Cash flow across accounting periods.
 
 ### **6. Analysis**
+<p align="center">
+  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/8.png?raw=true" alt="Image 8" width="600" height="auto">
+</p>
 - Shows insights from analysts, including:
   - **Price Targets**: Expected future price ranges.
   - **Stock Ratings**: Analyst recommendations (e.g., buy, hold, sell).
