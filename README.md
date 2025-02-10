@@ -106,12 +106,5 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 
 ---
 
-## **Future Enhancements**
-- Add portfolio tracking to allow users to manage and monitor their investments.
-- Include predictive modeling tools to forecast stock trends.
-- Integrate user authentication for personalized data views and saved settings.
-
----
-
 ## **Conclusion**
 Investo is a reliable and robust solution for anyone looking to dive into the stock market. By combining advanced analytics, news aggregation, and a user-friendly interface, it bridges the gap between complex data and actionable insights, empowering users in their financial journey.
