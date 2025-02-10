@@ -25,7 +25,7 @@ Investo is a web-based platform tailored for stock market enthusiasts, analysts,
 ## **Features**
 ### **1. Profile**
 <p align="center">
-  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true" alt="Image 3" width="500" height="auto">
+  <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/3.png?raw=true" alt="Image 3" width="600" height="auto">
 </p>
 
 - Displays essential company details, including:
