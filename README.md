@@ -2,7 +2,7 @@
 # <img src="https://github.com/MinhQuan805/Investo/blob/master/Demo/1.png?raw=true" alt="Image 2" width="150" >   -  A stock market web-based application.
 
 ### **Link**: [minhquan.pythonanywhere.com](https://minhquan.pythonanywhere.com/)
-
+Minh Thanh
 ## **Description**
 Investo is a web-based platform tailored for stock market enthusiasts, analysts, and investors of all levels. Designed with a user-centric approach, it provides powerful tools and features to enable users to make well-informed financial decisions. Its intuitive design and visually engaging interface simplify the complexity of stock market data, making it accessible to everyone from seasoned investors to beginners.
 
